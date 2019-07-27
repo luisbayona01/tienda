@@ -39,7 +39,7 @@
   <tbody>
   <tr ng-repeat="cart in cart">
   <td>{{cart.nombre}} </td>
-  <td>{{cart.cantidad}}</td>
+  <td>{{cart.cantidad}} <input type="number" name="qty" value="{{cart.cantidad}}" min="1" ng-model="cantidad1"  placeholder="Qty" autocomplete="off" style="width: 68px; height:30px; padding-top:6px; padding-bottom: 4px; margin-right: 4px; font-size:15px;" required="">	 <button ng-click="actualizarcantidad(cart.ordenproducto,cantidad1)" class="btn btn-info"> actualizar cantidad</button>  </td>
   <td>{{cart.precio}}</td>
   </tr>
   </tbody>
@@ -71,7 +71,7 @@
 			
         <p><button type="button" class="btn btn-primary" ng-click="addCarrito(cantidad, p.idproductos)">Agregra a carrito</button> 
 		<p>
-		<input type="number" name="qty" value="1" min="1"ng-model="cantidad"  placeholder="Qty" autocomplete="off" style="width: 68px; height:30px; padding-top:6px; padding-bottom: 4px; margin-right: 4px; font-size:15px;" required="">	 
+		<input type="number" name="qty"  min="1" ng-model="cantidad"  placeholder="Qty" autocomplete="off" style="width: 68px; height:30px; padding-top:6px; padding-bottom: 4px; margin-right: 4px; font-size:15px;" required="">	 
 		</p>
       </div>
     </div>

@@ -8,10 +8,15 @@ $("#table").hide()
   $http.get(url)
   .then(function(response) {
      $scope.categoria=response.data; 
+	 
      //console.log(response.data)
   });
 
 }
+
+
+
+$scope.cantidad=1;
 
 $scope.productos= function(){
 
@@ -50,9 +55,13 @@ $http({
 })  
 }
 
+$scope.actualisarcantidad=function(){
+	
+}
+
 $scope.addCarrito=function(cantidad,idproductos){
 var  url = urlglobal+"ProductosController/addcart";
- var  parametros=$.param({"cantidad":cantidad,"idproductos":idproductos });
+var  parametros=$.param({"cantidad":cantidad,"idproductos":idproductos });
 $http({
   method  : 'POST',
   url     : url,
@@ -63,7 +72,7 @@ $http({
  }).success(function(response){
   if(response.length!=0){
 	  $scope.cart=response;
-	  
+	  //console.log(response);
 $("#table").fadeIn();
   }
    
@@ -73,6 +82,32 @@ $("#table").fadeIn();
 
 }
 
+$scope.actualizarcantidad=function(ordenproducto,cantidad){
+	
+var  url = urlglobal+"ProductosController/addcart";
+var  parametros=$.param({"cantidad":cantidad,"idproductos":ordenproducto });
+$http({
+  method  : 'POST',
+  url     : url,
+  data    : parametros, 
+  headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+  
+   
+ }).success(function(response){
+  if(response.length!=0){
+	  $scope.cart=response;
+	  //console.log(response);
+$("#table").fadeIn();
+  }
+   
+   //$scope.products=response;    
+  
+})
+	
+	
+	
+	
+}
 $scope.categorias();
 $scope.productos();
  })
